@@ -188,7 +188,6 @@ function initBuffers(gl) {
         1.0,  1.0,
         1.0,  0.0,
         0.0,  0.0,
-
     ];
 
     gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(textureCoordinates),
