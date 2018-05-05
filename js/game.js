@@ -30,6 +30,7 @@ $("#confirmStartButton").click(function(){
 $("#restartButton").click(function(){
     score = 0;
     restart = true;
+    window.location.replace(window.location.href);
 });
 
 var restart = false;
@@ -283,28 +284,20 @@ function displayScore(){
 }
 
 function render() {
-    var newDate = new Date();
-    sumSec = newDate.getSeconds();
-    if(restart) {
-
-        window.location.replace(window.location.href);
-
+    if(score === 20){
+        cancelAnimationFrame(id);
+        clearCanvas();
+        main();
     }
-    else
-        if(score === 20){
-            cancelAnimationFrame(id);
-            clearCanvas();
-            main();
-        }
-        else {
-            id = requestAnimationFrame(render);
-            floatSphere(sphere1, material1, 1, 2, 0.91);
-            floatSphere(sphere2, material2, 1, 1, 0.35);
-            floatSphere(sphere3, material3, 2, 1, 0.73);
-            floatSphere(sphere4, material4, 1, 3, 0.25);
-            floatSphere(sphere5, material5, 3, 2, 0.55);
-            renderer.render( scene, camera );
-        }
+    else {
+        id = requestAnimationFrame(render);
+        floatSphere(sphere1, material1, 1, 2, 0.91);
+        floatSphere(sphere2, material2, 1, 1, 0.35);
+        floatSphere(sphere3, material3, 2, 1, 0.73);
+        floatSphere(sphere4, material4, 1, 3, 0.25);
+        floatSphere(sphere5, material5, 3, 2, 0.55);
+        renderer.render( scene, camera );
+    }
 };
 
 
